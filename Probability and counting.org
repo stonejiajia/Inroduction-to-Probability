@@ -1,0 +1,177 @@
+#+TITLE:R Basic
+* Vectors
+** R style
+#+BEGIN_SRC R :exports both :session 
+v = c(3,1,4,1,5,9)
+#+END_SRC
+
+#+RESULTS:
+| 3 |
+| 1 |
+| 4 |
+| 1 |
+| 5 |
+| 9 |
+
+#+BEGIN_SRC R :exports both :session 
+  v[c(1,3,5)]
+#+END_SRC
+
+#+RESULTS:
+| 3 |
+| 4 |
+| 5 |
+
+#+BEGIN_SRC R :exports both :session 
+  v[-(2:4)]
+#+END_SRC 
+
+#+RESULTS:
+| 3 |
+| 5 |
+| 9 |
+
+十个数字里选取五个分别是？
+
+#+BEGIN_SRC R :exports both :session 
+  n = 10; k = 5
+  sample(n,k)
+#+END_SRC
+
+#+RESULTS:
+|  6 |
+|  3 |
+|  4 |
+|  2 |
+| 10 |
+
+#+BEGIN_SRC R :exports both :session 
+  n = 100
+  r = replicate(10^5, sum(sample(n)==(1:n)))
+  sum(r>=1)/10^4
+#+END_SRC 
+
+#+RESULTS:
+: 6.3405
+
+
+
+** 生日问题
+23人中，至少有一对生日是相同的概率
+
+#+BEGIN_SRC R :exports both :session 
+  k = 23
+  1 - prod((365 - k + 1):365)/365^k
+
+#+END_SRC
+
+#+RESULTS:
+: 0.507297234323985
+
+#+BEGIN_SRC R :exports both :session 
+prod((360:365))
+#+END_SRC
+#+RESULTS:
+: 2268919806753600
+
+#+BEGIN_SRC R :exports both :session 
+b = sample(1:365, 23, replace=TRUE)
+table(b)
+#+END_SRC
+
+#+RESULTS:
+|  12 | 1 |
+|  30 | 1 |
+|  39 | 1 |
+|  58 | 2 |
+|  94 | 1 |
+|  95 | 1 |
+|  99 | 1 |
+| 135 | 1 |
+| 181 | 1 |
+| 184 | 1 |
+| 198 | 1 |
+| 206 | 1 |
+| 217 | 1 |
+| 219 | 1 |
+| 244 | 1 |
+| 262 | 1 |
+| 263 | 1 |
+| 264 | 1 |
+| 270 | 1 |
+| 339 | 1 |
+| 357 | 1 |
+| 358 | 1 |
+
+#+BEGIN_SRC R :exports both :session 
+  r = replicate(10^4, max(tabulate(sample(1:365,23,replace = TRUE))))
+  sum(r > 2)/10^4
+#+END_SRC
+
+#+RESULTS:
+: 0.013
+
+** Python style
+#+BEGIN_SRC ipython :session :exports both 
+  import matplotlib.pyplot as plt
+  %matplotlib inline
+  import pandas as pd
+  import numpy as np
+  import seaborn as sns
+
+  a = np.random.choice(10, 5)
+  #a
+  b = np.random.choice(10, 5, replace=True)
+  b
+#+END_SRC
+
+#+RESULTS:
+: array([6, 9, 3, 3, 3])
+
+
+
+
+#+BEGIN_SRC ipython :session :exports both  
+n = 23  
+k = np.arange(350,366)
+k
+
+#+END_SRC
+
+#+RESULTS:
+: array([350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362,
+:        363, 364, 365])
+
+
+ 
+#+BEGIN_SRC ipython :session :exports both  
+np.prod(k)
+#+END_SRC
+
+#+RESULTS:
+: 2268919806753600
+
+#+BEGIN_SRC ipython :session :exports both  
+  k = 23  
+  a = [i for i in range(365-k+1, 366,1)]
+  a
+  def prod(list):
+      p = 1
+      for i in list:
+          p = p * i   
+      return p
+  1 - prod(a)/365**k
+   
+
+#+END_SRC
+
+#+RESULTS:
+: 0.5072972343239854
+
+#+BEGIN_SRC ipython :session :exports both  :results output
+import sys
+print(sys.path)
+#+END_SRC
+
+#+RESULTS:
+: ['', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python35.zip', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/plat-darwin', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/lib-dynload', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/Sphinx-1.4.6-py3.5.egg', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/aeosa', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/setuptools-27.2.0-py3.5.egg', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/IPython/extensions', '/Users/stone20091652/.ipython']
