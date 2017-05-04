@@ -72,7 +72,7 @@ np.prod(k)
 ```
 
 ``` {.example}
-2268919806753600
+2268919806753y600
 ```
 
 ``` {.ipython .rundoc-block rundoc-language="ipython" rundoc-session="yes" rundoc-exports="both"}
