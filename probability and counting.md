@@ -155,3 +155,6 @@ np.prod(k)
 0.5072972343239854
 
 # 
+| Markdown | HTML | Rendered |
+| -- | -- | -- |
+| `# Some Header` | `<h1>Some Header</h1>` | <h1>Some Header</h1> |
