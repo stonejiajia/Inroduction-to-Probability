@@ -1,7 +1,7 @@
 # Summary
 
 * [Probability and counting]
-   * [Probability and counting](probability and counting.md)
+   * [概率与计数](probability and counting.md)
    
 * [Statistical Thinking for Data Science and Analytics](Statistical.md)
    * [贝叶斯](Bayes.md)
