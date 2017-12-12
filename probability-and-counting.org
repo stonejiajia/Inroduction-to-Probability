@@ -79,9 +79,11 @@ b = sample(1:365, 23, replace=TRUE)
 table(b)
 #+END_SRC
 
-#+RESULTS:
+#+RE_SULTS:
 |  12 | 1 |
-|  30 | 1 |
+|   replicate(1e5, {
+    1-any(sample(n)==sample(n))
+  })30 | 1 |
 |  39 | 1 |
 |  58 | 2 |
 |  94 | 1 |
@@ -112,6 +114,8 @@ table(b)
 : 0.013
 
 ** Python style
+R sample function in python
+
 #+BEGIN_SRC ipython :session :exports both 
   import matplotlib.pyplot as plt
   %matplotlib inline
@@ -175,3 +179,69 @@ print(sys.path)
 
 #+RESULTS:
 : ['', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python35.zip', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/plat-darwin', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/lib-dynload', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/Sphinx-1.4.6-py3.5.egg', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/aeosa', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/setuptools-27.2.0-py3.5.egg', '/Users/stone20091652/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages/IPython/extensions', '/Users/stone20091652/.ipython']
+
+* Home work
+** 第50题
+#+BEGIN_SRC R :exports both :session
+  Test = 123
+  n <- 20
+  out <- replicate(1e5, {
+    1-any(sample(n)==sample(n))
+  })
+  mean(out)
+
+#+END_SRC
+
+#+RESULTS:
+: 0.36894
+
+#+BEGIN_SRC R :exports both :session 
+library(ggplot2) 
+
+
+library(ggthemes) 
+
+library(extrafont)
+
+charts.data = read.csv("copper-data-for-book.csv")
+
+
+#+END_SRC
+
+#+RESULTS:
+| copper | 2006 |  4176 | 79 |  5255 |
+| copper | 2007 |  8560 | 81 | 10505 |
+| copper | 2008 |  6473 | 76 |  8519 |
+| copper | 2009 | 10465 | 80 | 13027 |
+| copper | 2010 | 14977 | 86 | 17325 |
+| copper | 2011 | 15421 | 83 | 18629 |
+| copper | 2012 | 14805 | 82 | 18079 |
+| copper | 2013 | 15183 | 80 | 19088 |
+| copper | 2014 | 14012 | 76 | 18437 |
+| others | 2006 |  1079 | 21 |  5255 |
+| others | 2007 |  1945 | 19 | 10505 |
+| others | 2008 |  2046 | 24 |  8519 |
+| others | 2009 |  2562 | 20 | 13027 |
+| others | 2010 |  2348 | 14 | 17325 |
+| others | 2011 |  3208 | 17 | 18629 |
+| others | 2012 |  3274 | 18 | 18079 |
+| others | 2013 |  3905 | 20 | 19088 |
+| others | 2014 |  4425 | 24 | 18437 |
+#+R: action:barplot rownames:t columns:1 width:500 col:darkblue
+#+BEGIN_SRC R :session :exports both :results graphics :file ./fig_1.png :width 600 :height 300 :res 80
+
+p1 = ggplot(aes(y = export, x = year, colour = product), data = charts.data) + geom_line()
+  p1
+#+END_SRC
+
+#+RESULTS:
+[[file:./fig_1.png]]
+
+#+BEGIN_SRC R :exports both :results graphics :file ./fig_2.png :session :width 600 :height 300 :res 120
+p1 = ggplot(aes(y = export, x = year, colour = product), data = charts.data) + geom_line(size = 1.5)
+p1
+#+END_SRC
+
+#+RESULTS:
+[[file:./fig_2.png]]
+
