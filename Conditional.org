@@ -1,0 +1,20 @@
+
+#+TITLE:Exercise
+
+* Conditional on evidence
+** 第五题
+A 事件：第一张牌是 黑桃 A
+B 事件：第二张牌是 梅花 8
+C 事件：第三张牌是 A
+
+$P(A,B,C)$
+
+表示没摸牌前，事件 A B C 发生的概率
+
+
+$P(C|A,B)$
+
+表示出现 事件 A B 后，C 的概率
+
+$P(A,B,C) != P(C|A,B)$
+

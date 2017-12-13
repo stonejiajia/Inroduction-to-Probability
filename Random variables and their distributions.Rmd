@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Binomial distribution
+```{r}
+dbinom(3, 5, 0.2)
+```
+
+```{r}
+rbinom(7, 5, 0.2)
+```
+
+# Hupergeometric distriution
+```{r}
+sample(100, 5, replace = TRUE)
+```
+```{r}
+pbinom(100, 110, 0.9)
+```
+
+
+
+```{r}
+dunif(x, min = 0, max = 8, log = FALSE)
+```
+
+
+
